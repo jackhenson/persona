@@ -1,0 +1,19 @@
+AllCops:
+  # Display cop names
+  DisplayCopNames: true
+  # Display Extra details
+  ExtraDetails: true
+  # Style guide URLs are not displayed in offense messages by default. Change
+  # behavior by overriding DisplayStyleGuide, or by giving the
+  # -S/--display-style-guide option.
+  DisplayStyleGuide: true
+  # When specifying style guide URLs, any paths and/or fragments will be
+  # evaluated relative to the base URL.
+  StyleGuideBaseURL: https://rubystyle.guide/
+  NewCops: enable
+    
+Style/FrozenStringLiteralComment:
+    Enabled: false
+
+Style/Documentation:
+  Enabled: false
