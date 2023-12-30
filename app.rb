@@ -22,5 +22,5 @@ before do
 end
 
 get '/' do
-  'Home'
+  erb :home
 end
