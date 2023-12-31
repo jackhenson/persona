@@ -3,6 +3,7 @@ CREATE TYPE age_range AS ENUM ('18-24', '25-35', '35-44',
 
 CREATE TABLE businesses (
     id serial PRIMARY KEY,
+    uuid uuid NOT NULL,
     name text NOT NULL
 );
 
@@ -11,25 +12,15 @@ CREATE TABLE users (
     name text NOT NULL,
     age age_range,
     bio text,
-    love_phrase varchar(15) NOT NULL,
-    hate_phrase varchar(15) NOT NULL,
-    biz_id integer NOT NULL REFERENCES businesses (id)
+    love_phrase text NOT NULL,
+    hate_phrase text NOT NULL,
+    biz_id integer NOT NULL REFERENCES businesses (id) ON DELETE CASCADE
 );
 
-CREATE TABLE needs (
+CREATE TABLE profiles (
     id serial PRIMARY KEY,
-    name text NOT NULL,
-    user_id integer NOT NULL REFERENCES users (id)
-);
-
-CREATE TABLE motivations (
-    id serial PRIMARY KEY,
-    name text NOT NULL,
-    user_id integer NOT NULL REFERENCES users (id)
-);
-
-CREATE TABLE challenges (
-    id serial PRIMARY KEY,
-    name text NOT NULL,
-    user_id integer NOT NULL REFERENCES users (id)
+    need text NOT NULL,
+    motivation text NOT NULL,
+    challenge text NOT NULL,
+    user_id integer NOT NULL REFERENCES users (id) ON DELETE CASCADE
 );
