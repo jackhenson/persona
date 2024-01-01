@@ -36,7 +36,21 @@ class DatabaseConnection
     query(sql, uuid, biz_name)
   end
 
-  def load_company(uuid)
+  def create_new_user(uuid, user_params)
+    id = fetch_biz_id(uuid)
+    sql = 'INSERT INTO users (name, age, bio, love_phrase, hate_phrase, biz_id)
+            VALUES ($1, $2, $3, $4, $5, $6)'
+    query(sql, user_params[:name], user_params[:age], user_params[:bio],
+          user_params[:love], user_params[:hate], id)
+  end
+
+  def fetch_biz_id(uuid)
+    sql = 'SELECT id FROM businesses WHERE uuid = $1 LIMIT 1'
+    result = query(sql, uuid)
+    result.values.flatten.first.to_i
+  end
+
+  def load_business(uuid)
     sql = <<~SQL
       SELECT b.id      AS biz_id,
              b.uuid    AS biz_uuid,
@@ -70,7 +84,7 @@ def tuple_to_business(result)
     result.field_values('biz_id').first.to_i,
     result.field_values('biz_uuid').first,
     result.field_values('biz_name').first,
-    result.field_values('user_id').first.nil? ? nil : tuples_to_users(result)
+    result.field_values('user_id').first.nil? ? [] : tuples_to_users(result)
   )
 end
 

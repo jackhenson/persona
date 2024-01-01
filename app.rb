@@ -52,7 +52,33 @@ end
 
 get '/biz/:uuid' do
   uuid = params[:uuid]
-  @company = @storage.load_company(uuid)
+  @business = @storage.load_business(uuid)
+  @users = @business.users
 
   erb :biz
+end
+
+# New user form
+get '/biz/:uuid/users/new' do
+  erb :new_user
+end
+
+# Create new user
+post '/biz/:uuid/users' do
+  uuid = params[:uuid]
+  user_params = { name: params[:name], age: params[:age],
+                  bio: params[:bio], love: params[:love_phrase],
+                  hate: params[:hate_phrase], need: params[:motivation],
+                  motivation: params[:motivation], challenge: params[:challenge] }
+
+  error = nil
+  # error = error_for_user_params(user_params)
+  if error
+    session[:error] = error
+    erb :home
+  else
+    @storage.create_new_user(uuid, user_params)
+    session[:success] = 'The user has been created.'
+    redirect "/biz/#{uuid}"
+  end
 end

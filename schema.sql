@@ -1,4 +1,4 @@
-CREATE TYPE age_range AS ENUM ('18-24', '25-35', '35-44',
+CREATE TYPE age_range AS ENUM ('18-24', '25-34', '35-44',
     '45-54', '55-64', '65+');
 
 CREATE TABLE businesses (
@@ -14,7 +14,7 @@ CREATE TABLE users (
     bio text,
     love_phrase text NOT NULL,
     hate_phrase text NOT NULL,
-    biz_id integer NOT NULL REFERENCES businesses (id) ON DELETE CASCADE
+    biz_id int NOT NULL REFERENCES businesses (id) ON DELETE CASCADE
 );
 
 CREATE TABLE profiles (

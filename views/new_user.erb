@@ -1,0 +1,50 @@
+<section>
+  <p>Create a new User Persona for your business.</p>
+  <br>
+  <p>Complete this form with details for this user.</p>
+</section>
+
+  <div class="hero">
+    <div id="biz-form">
+      <form action="/biz/<%= params[:uuid] %>/users" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Age range:</label><br>
+        <select name="age" id="age" required>
+          <option value="">--Please choose an option--</option>
+          <option value="18-24">18-24</option>
+          <option value="25-34">25-34</option>
+          <option value="35-44">35-44</option>
+          <option value="45-54">45-54</option>
+          <option value="55-64">55-64</option>
+          <option value="65+">65+</option>
+        </select>
+
+        <br><br>
+
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" rows="4" required></textarea>
+
+        <label for="love_phrase">What something this person <strong>loves</strong>?</label>
+        <input type="text" id="love_phrease" name="love_phrase" required>
+
+        <label for="hate_phrase">What's something this person <strong>hates</strong>?</label>
+        <input type="text" id="hate_phrease" name="hate_phrase" required>
+        <br><br>
+
+        <h5>Needs, Motivations, and Challenges</h5>
+        <p>Answer these as related to the products or services offered by your business.</p>
+        <br>
+        <label for="need">Describe a critical <strong>need</strong> for this user:</label>
+        <input type="text" id="need" name="need" required>
+        <br>
+        <label for="challenge">What <strong>motivates</strong> this customer?</label>
+        <input type="text" id="challenge" name="challenge" required>
+        <br>
+        <label for="challenge">Name a <strong>challenge</strong> for this user:</label>
+        <input type="text" id="challenge" name="challenge" required>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+  </div>

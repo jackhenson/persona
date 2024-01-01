@@ -84,7 +84,7 @@ footer {
   bottom: 0;
 }
 
-#biz-form {
+form {
   color: black;
   background-color: #f4f4f4;
   padding: 20px;
@@ -93,17 +93,20 @@ footer {
 }
 
 label {
-  display: block;
+  display: inline-block;
   margin-bottom: 8px;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 16px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
 }
 
 button {
