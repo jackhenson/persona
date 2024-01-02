@@ -50,6 +50,11 @@ def error_for_biz_name(biz_name)
   'Name must be between 1 and 25 characters.' unless (1..25).cover? biz_name.size
 end
 
+get '/biz/retrieve' do
+  uuid = params[:uuid]
+  redirect "/biz/#{uuid}"
+end
+
 get '/biz/:uuid' do
   uuid = params[:uuid]
   @business = @storage.load_business(uuid)

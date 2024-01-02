@@ -3,13 +3,21 @@
 </section>
 
 <aside>
-  <div class="hero">
-    <div id="biz-form">
-      <form action="/biz" method="post">
-        <label for="biz_name">Enter business name:</label>
-        <input type="text" name="biz_name" name="biz_name" placeholder="My Great Company, LLC." required>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+  <div id="biz-form">
+    <form action="/biz" method="post">
+      <label for="biz_name">Enter business name:</label>
+      <input type="text" name="biz_name" name="biz_name" placeholder="My Great Company, LLC." required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <br>
+
+  <div id="biz-form">
+    <form action="/biz/retrieve" method="get">
+      <label for="uuid">Already created a business? Enter Unique ID:</label>
+      <input type="text" name="uuid" placeholder="3eaca621-0455-413a-b36b-63c8f1cfbfc3" required>
+      <button type="submit">Submit</button>
+    </form>
   </div>
 </aside>
