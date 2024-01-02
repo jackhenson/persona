@@ -54,6 +54,7 @@ get '/biz/:uuid' do
   uuid = params[:uuid]
   @business = @storage.load_business(uuid)
   @users = @business.users
+  @biz_link = request.url
 
   erb :biz
 end

@@ -1,28 +1,23 @@
 
 <div>
-  <h3>Business name: <strong><%= @business.name %></p></strong></h3>
+  <p>Business name:<p>
+  <p class='biz_name'><%= @business.name %></p>
   <br>
-  <p>UUID is <%= @business.uuid %></p>
+  <p><strong>Your unique Business ID is:</strong> <%= @business.uuid %></p>
+  <br>
+  <p><strong>Sharing link:</strong> <a href="<%= @biz_link %>"><%= @biz_link %></a></p>
   <br>
   <p>This business has <%= @users.size %> user persona(s).</p>
 </div>
 
-<aside>
+<div>
     <form action="/biz/<%= params[:uuid] %>/users/new" method="get">
         <button type="submit">Create a new User Persona</button>
     </form>
-</aside>
-
-
 <div>
-  <% @users.each do |u| %>
-  <h4><%= u.name %></h4>
-  <ul>
-    <li><%= u.name %></li>
-    <li><%= u.age %></li>
-    <li><%= u.bio %></li>
-    <li>Loves: <%= u.love_phrase %></li>
-    <li>Hates: <%= u.hate_phrase %></li>
-  </ul>
-  <% end %>
+
+<br>
+
+<div class="user-card-list">
+  <%== erb :user_card %>
 </div>

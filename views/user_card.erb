@@ -1,0 +1,16 @@
+  <% if @users.empty? %>
+    <p>There are no user personas. <a href="<%= @biz_link %>/users/new">Create a new user.</a>
+  <% end %>
+  
+  <% @users.each do |u| %>
+  <div class="user-card">
+    <img class="profile-img" src="/images/user-icon.png" alt="Profile Image">
+    <h4><%= u.name %></h4>
+    <ul class="user-info">
+      <li><strong>Age:</strong> <%= u.age %></li>
+      <li><strong>Bio:</strong> <%= u.bio %></li>
+      <li>"I love <%= u.love_phrase %>."</li>
+      <li>"I hate <%= u.hate_phrase %>."</li>
+    </ul>
+  </div>
+  <% end %>
