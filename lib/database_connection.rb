@@ -18,7 +18,7 @@ class DatabaseConnection
   end
 
   def query(statement, *params)
-    @logger.info "#{statement}: #{params}" unless ENV['RACK_ENV'] = 'test'
+    @logger.info "#{statement}: #{params}" unless ENV['RACK_ENV'] == 'test'
     @db.exec_params(statement, params)
   end
 
@@ -48,6 +48,14 @@ class DatabaseConnection
     sql = 'SELECT id FROM businesses WHERE uuid = $1 LIMIT 1'
     result = query(sql, uuid)
     result.values.flatten.first.to_i
+  end
+
+  def valid_uuid?(uuid)
+    uuid.match?(/\A[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}\z/)
+  end
+
+  def valid_business?(uuid)
+    valid_uuid?(uuid) && fetch_biz_id(uuid) > 0 ? true : false
   end
 
   def load_business(uuid)

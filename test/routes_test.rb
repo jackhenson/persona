@@ -49,7 +49,9 @@ class RoutesTest < Minitest::Test
     post '/biz', { biz_name: 'Test Business' }
 
     assert_equal 302, last_response.status
-    assert_equal 'The list has been created.', session[:success]
+    get last_response['Location']
+
+    assert_includes last_response.body, 'The list has been created.'
   end
 
   def test_retrieve_business
@@ -59,5 +61,14 @@ class RoutesTest < Minitest::Test
     get last_response['Location']
 
     assert_includes last_response.body, '<p>Business name:'
+  end
+
+  def test_business_not_found
+    get '/biz/invalid-uuid'
+
+    assert_equal 302, last_response.status
+
+    get last_response['Location']
+    assert_includes last_response.body, 'Business not found'
   end
 end

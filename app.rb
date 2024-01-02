@@ -52,16 +52,28 @@ end
 
 get '/biz/retrieve' do
   uuid = params[:uuid]
-  redirect "/biz/#{uuid}"
+
+  if @storage.valid_business?(uuid)
+    redirect "/biz/#{uuid}"
+  else
+    session[:error] = 'Business not found. Please check your Unique ID and try again.'
+    redirect '/'
+  end
 end
 
 get '/biz/:uuid' do
   uuid = params[:uuid]
-  @business = @storage.load_business(uuid)
-  @users = @business.users
-  @biz_link = request.url
 
-  erb :biz
+  if @storage.valid_business?(uuid)
+    @business = @storage.load_business(uuid)
+    @users = @business.users
+    @biz_link = request.url
+
+    erb :biz
+  else
+    session[:error] = 'Business not found. Please check your Unique ID and try again.'
+    redirect '/'
+  end
 end
 
 # New user form
