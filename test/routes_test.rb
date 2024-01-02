@@ -51,7 +51,7 @@ class RoutesTest < Minitest::Test
     assert_equal 302, last_response.status
     get last_response['Location']
 
-    assert_includes last_response.body, 'The list has been created.'
+    assert_includes last_response.body, 'The business has been created.'
   end
 
   def test_retrieve_business

@@ -41,7 +41,7 @@ post '/biz' do
   else
     uuid = SecureRandom.uuid
     @storage.create_new_biz(uuid, biz_name)
-    session[:success] = 'The list has been created.'
+    session[:success] = 'The business has been created.'
     redirect "/biz/#{uuid}"
   end
 end
