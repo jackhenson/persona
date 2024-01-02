@@ -18,7 +18,7 @@ class DatabaseConnection
   end
 
   def query(statement, *params)
-    @logger.info "#{statement}: #{params}"
+    @logger.info "#{statement}: #{params}" unless ENV['RACK_ENV'] = 'test'
     @db.exec_params(statement, params)
   end
 
@@ -37,11 +37,11 @@ class DatabaseConnection
   end
 
   def create_new_user(uuid, user_params)
-    id = fetch_biz_id(uuid)
+    biz_id = fetch_biz_id(uuid)
     sql = 'INSERT INTO users (name, age, bio, love_phrase, hate_phrase, biz_id)
             VALUES ($1, $2, $3, $4, $5, $6)'
     query(sql, user_params[:name], user_params[:age], user_params[:bio],
-          user_params[:love], user_params[:hate], id)
+          user_params[:love], user_params[:hate], biz_id)
   end
 
   def fetch_biz_id(uuid)

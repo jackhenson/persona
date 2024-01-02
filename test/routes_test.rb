@@ -21,6 +21,17 @@ class RoutesTest < Minitest::Test
   def setup
     @db = DatabaseConnection.new
     @db.delete_all_data
+
+    # Sample Data
+    user_params = { name: 'Test Name', age: '25-34',
+                    bio: 'Test Bio', love: 'Love Phrase',
+                    hate: 'Hate Phrase', need: 'Test Need',
+                    motivation: 'Test Motivation', challenge: 'Test Challenge' }
+    uuid = '3eaca621-0455-413a-b36b-63c8f1cfbfc3'
+
+    @db.create_new_biz(uuid, 'Test Biz')
+    @db.create_new_user(uuid, user_params)
+    @business = @db.load_business(uuid)
   end
 
   def teardown
@@ -39,5 +50,14 @@ class RoutesTest < Minitest::Test
 
     assert_equal 302, last_response.status
     assert_equal 'The list has been created.', session[:success]
+  end
+
+  def test_retrieve_business
+    get '/biz/retrieve', { uuid: '3eaca621-0455-413a-b36b-63c8f1cfbfc3' }
+
+    assert_equal 302, last_response.status
+    get last_response['Location']
+
+    assert_includes last_response.body, '<p>Business name:'
   end
 end
