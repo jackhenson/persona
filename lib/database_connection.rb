@@ -44,6 +44,11 @@ class DatabaseConnection
           user_params[:love], user_params[:hate], biz_id)
   end
 
+  def delete_user_from_biz(user_id, biz_id)
+    sql = 'DELETE FROM users WHERE id = $1 AND biz_id = $2;'
+    query(sql, user_id, biz_id)
+  end
+
   def fetch_biz_id(uuid)
     sql = 'SELECT id FROM businesses WHERE uuid = $1 LIMIT 1'
     result = query(sql, uuid)
@@ -86,6 +91,8 @@ class DatabaseConnection
     tuple_to_business(result)
   end
 end
+
+# private
 
 def tuple_to_business(result)
   Business.new(

@@ -93,10 +93,20 @@ post '/biz/:uuid/users' do
   # error = error_for_user_params(user_params)
   if error
     session[:error] = error
-    erb :home
+    erb :new_user
   else
     @storage.create_new_user(uuid, user_params)
     session[:success] = 'The user has been created.'
     redirect "/biz/#{uuid}"
   end
+end
+
+post '/biz/:uuid/users/:id/destroy' do
+  uuid = params[:uuid]
+  biz_id = params[:biz_id]
+  user_id = params[:id]
+
+  @storage.delete_user_from_biz(user_id, biz_id)
+  session[:success] = 'The user has been deleted.'
+  redirect "/biz/#{uuid}"
 end

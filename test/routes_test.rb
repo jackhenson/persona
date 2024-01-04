@@ -71,4 +71,13 @@ class RoutesTest < Minitest::Test
     get last_response['Location']
     assert_includes last_response.body, 'Business not found'
   end
+
+  def test_delete_user
+    post '/biz/3eaca621-0455-413a-b36b-63c8f1cfbfc3/users/1/destroy'
+
+    assert_equal 302, last_response.status
+
+    get last_response['Location']
+    assert_includes last_response.body, 'The user has been deleted.'
+  end
 end

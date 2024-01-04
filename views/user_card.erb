@@ -12,5 +12,10 @@
       <li><img src='/images/green-check-icon.png'> "I love <%= u.love_phrase %>."</li>
       <li><img src='/images/red-x-icon.png'> "I hate <%= u.hate_phrase %>."</li>
     </ul>
+
+    <form action="/biz/<%= @business.uuid %>/users/<%= u.id %>/destroy" method="post">
+        <button class='add-user-button' name='biz_id' value="<%= @business.id %>" type="submit">Delete User</button>
+    </form>
+
   </div>
   <% end %>
