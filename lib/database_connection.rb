@@ -90,38 +90,45 @@ class DatabaseConnection
     result = query(sql, uuid)
     tuple_to_business(result)
   end
-end
 
-# private
+  def load_user(id)
+    sql = 'SELECT * FROM users WHERE id = $1'
+    result = query(sql, id)
 
-def tuple_to_business(result)
-  Business.new(
-    result.field_values('biz_id').first.to_i,
-    result.field_values('biz_uuid').first,
-    result.field_values('biz_name').first,
-    result.field_values('user_id').first.nil? ? [] : tuples_to_users(result)
-  )
-end
+    tuples_to_users(result).first
+  end
 
-def tuples_to_users(result)
-  result.each_with_object([]) do |user_tuple, arr|
-    arr << User.new(
-      user_tuple['user_id'].to_i,
-      user_tuple['user_name'],
-      user_tuple['age'],
-      user_tuple['bio'],
-      user_tuple['love_phrase'],
-      user_tuple['hate_phrase'],
-      tuple_to_profile(user_tuple)
+  private
+
+  def tuple_to_business(result)
+    Business.new(
+      result.field_values('biz_id').first.to_i,
+      result.field_values('biz_uuid').first,
+      result.field_values('biz_name').first,
+      result.field_values('user_id').first.nil? ? [] : tuples_to_users(result)
     )
   end
-end
 
-def tuple_to_profile(user_tuple)
-  Profile.new(
-    user_tuple['profile_id'].to_i,
-    user_tuple['need'],
-    user_tuple['motivation'],
-    user_tuple['challenge']
-  )
+  def tuples_to_users(result)
+    result.each_with_object([]) do |user_tuple, arr|
+      arr << User.new(
+        user_tuple['id'].to_i,
+        user_tuple['name'],
+        user_tuple['age'],
+        user_tuple['bio'],
+        user_tuple['love_phrase'],
+        user_tuple['hate_phrase'],
+        tuple_to_profile(user_tuple)
+      )
+    end
+  end
+
+  def tuple_to_profile(user_tuple)
+    Profile.new(
+      user_tuple['profile_id'].to_i,
+      user_tuple['need'],
+      user_tuple['motivation'],
+      user_tuple['challenge']
+    )
+  end
 end

@@ -110,3 +110,11 @@ post '/biz/:uuid/users/:id/destroy' do
   session[:success] = 'The user has been deleted.'
   redirect "/biz/#{uuid}"
 end
+
+# Edit an existing user profile
+get '/biz/:uuid/users/:id/edit' do
+  user_id = params['id']
+  @user = @storage.load_user(user_id)
+
+  erb :edit_user
+end
