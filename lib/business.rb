@@ -12,7 +12,7 @@ end
 class User
   attr_reader :id, :name, :age, :bio, :love_phrase, :hate_phrase, :need, :motivation, :challenge
 
-  def initialize(id, name, age, bio, love_phrase, hate_phrase, _need, _motivation, challenge)
+  def initialize(id, name, age, bio, love_phrase, hate_phrase, need, motivation, challenge)
     @id = id
     @name = name
     @age = age

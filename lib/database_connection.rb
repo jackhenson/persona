@@ -43,6 +43,17 @@ class DatabaseConnection
           user_params[:motivation], user_params[:challenge], biz_id)
   end
 
+  def update_user(uuid, user_params)
+    biz_id = fetch_biz_id(uuid)
+    sql = 'UPDATE users
+            SET name = $2, age = $3, bio = $4, love_phrase = $5, hate_phrase = $6,
+            need = $7, motivation = $8, challenge = $9
+            WHERE id = $1 AND biz_id = $10;'
+    query(sql, user_params[:id], user_params[:name], user_params[:age], user_params[:bio],
+          user_params[:love_phrase], user_params[:hate_phrase], user_params[:need],
+          user_params[:motivation], user_params[:challenge], biz_id)
+  end
+
   def delete_user_from_biz(user_id, biz_id)
     sql = 'DELETE FROM users WHERE id = $1 AND biz_id = $2;'
     query(sql, user_id, biz_id)

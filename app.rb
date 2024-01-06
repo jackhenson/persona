@@ -113,8 +113,22 @@ end
 
 # Edit an existing user profile
 get '/biz/:uuid/users/:id/edit' do
-  user_id = params['id']
-  @user = @storage.load_user(user_id)
+  @user_id = params['id']
+  @uuid = params['uuid']
+  @user = @storage.load_user(@user_id)
 
   erb :edit_user
+end
+
+# Update an existing user profile
+post '/biz/:uuid/users/:id' do
+  uuid = params['uuid']
+  user_params = { id: params['id'], name: params[:name], age: params[:age],
+                  bio: params[:bio], love_phrase: params[:love_phrase],
+                  hate_phrase: params[:hate_phrase], need: params[:need],
+                  motivation: params[:motivation], challenge: params[:challenge] }
+
+  @storage.update_user(uuid, user_params)
+  session[:success] = 'The user has been updated.'
+  redirect "/biz/#{uuid}"
 end

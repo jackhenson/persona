@@ -27,6 +27,12 @@ class RoutesTest < Minitest::Test
                      bio: 'Test Bio', love_phrase: 'Love Phrase',
                      hate_phrase: 'Hate Phrase', need: 'Test Need',
                      motivation: 'Test Motivation', challenge: 'Test Challenge' }
+
+    @updated_user_params = { name: 'Updated Username', age: '45-54',
+                             bio: 'Updated Bio', love_phrase: 'Update Love Phrase',
+                             hate_phrase: 'Updated Hate Phrase', need: 'Updated Need',
+                             motivation: 'Updated Motivation', challenge: 'Updated Challenge' }
+
     uuid = '3eaca621-0455-413a-b36b-63c8f1cfbfc3'
 
     @db.create_new_biz(uuid, 'Test Biz')
@@ -90,5 +96,16 @@ class RoutesTest < Minitest::Test
     assert_includes last_response.body, 'The user has been created.'
     assert_includes last_response.body, 'Test Name'
     assert_includes last_response.body, '25-34'
+  end
+
+  def test_update_user
+    post '/biz/3eaca621-0455-413a-b36b-63c8f1cfbfc3/users/1', @updated_user_params
+
+    assert_equal 302, last_response.status
+
+    get last_response['Location']
+    assert_includes last_response.body, 'The user has been updated.'
+    assert_includes last_response.body, 'Updated Username'
+    assert_includes last_response.body, '45-54'
   end
 end
