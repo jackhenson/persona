@@ -6,7 +6,7 @@
     <div id="biz-form">
       <form class="basic-form" action="/biz/<%= params[:uuid] %>/users" method="post">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" value="<%= @user.name %>" required>
 
         <label for="age">Age range:</label><br>
         <select name="age" id="age" required>
@@ -22,26 +22,26 @@
         <br><br>
 
         <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" rows="4" required></textarea>
+        <textarea id="bio" name="bio" rows="4" required><%= @user.bio %></textarea>
 
         <label for="love_phrase"><img src='/images/red-heart-icon.png'> What something this person <strong>loves</strong>?</label>
-        <input type="text" id="love_phrease" name="love_phrase" required>
+        <input type="text" id="love_phrase" name="love_phrase" value="<%= @user.love_phrase %>" required>
 
         <label for="hate_phrase">What's something this person <strong>hates</strong>?</label>
-        <input type="text" id="hate_phrease" name="hate_phrase" required>
+        <input type="text" id="hate_phrase" name="hate_phrase" value="<%= @user.hate_phrase %>" required>
         <br><br>
 
         <h5>Needs, Motivations, and Challenges</h5>
         <p>Answer these as related to the products or services offered by your business.</p>
         <br>
         <label for="need">Describe a critical <strong>need</strong> for this user:</label>
-        <input type="text" id="need" name="need" required>
+        <input type="text" id="need" name="need" value="<%= @user.profile.need %>" required>
         <br>
-        <label for="challenge">What <strong>motivates</strong> this customer?</label>
-        <input type="text" id="challenge" name="challenge" required>
+        <label for="motivation">What <strong>motivates</strong> this customer?</label>
+        <input type="text" id="motivation" name="motivation" value="<%= @user.profile.motivation %>" required>
         <br>
         <label for="challenge">Name a <strong>challenge</strong> for this user:</label>
-        <input type="text" id="challenge" name="challenge" required>
+        <input type="text" id="challenge" name="challenge" value="<%= @user.profile.challenge %>" required>
         <button type="submit">Submit</button>
     </form>
     </div>

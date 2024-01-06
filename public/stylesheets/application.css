@@ -88,14 +88,38 @@ footer {
   bottom: 0;
 }
 
+/* button {
+  background-color: #CD7732;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+button:hover {
+  background-color: #45a049;
+}
+
 .add-user-button {
   color: black;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  padding: 20px;
+  padding: 10px;
   border-radius: 8px;
   align: center;
-  width: 50%;
+  width: 40%;
+}
+
+.edit-user-button {
+  background-color: #45a049;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  align: center;
+  width: 40%;
 }
 
 .basic-form {
@@ -121,19 +145,6 @@ textarea {
 
 input[type="radio"] {
     margin-right: 5px;
-}
-
-button {
-  background-color: #CD7732;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
 }
 
 .hero {
@@ -164,10 +175,13 @@ button:hover {
 }
 
 .user-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   grid-row: span 1;
   grid-column: span 1;
   width: 275px;
-  height: 275px;
+  height: auto;
   background-color: #f0f0f0;
   border: 2px solid #ccc;
   border-radius: 10px;
@@ -181,8 +195,7 @@ button:hover {
 .user-info {
   color: black;
   text-align: left;
-  padding-top: 8px;
-  padding-left: 25px;
+  padding: 8px 25px 10px 25px;
   font-size: 18px;
   line-height: 1.5;
 }
@@ -196,6 +209,7 @@ button:hover {
 }
 
 .profile-img {
+  align-self: center;
   padding-top: 20px;
   padding-bottom: 5px;
   width: 20%;

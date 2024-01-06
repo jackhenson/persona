@@ -10,17 +10,13 @@ CREATE TABLE businesses (
 CREATE TABLE users (
     id serial PRIMARY KEY,
     name text NOT NULL,
-    age age_range,
-    bio text,
+    age age_range NOT NULL,
+    bio text NOT NULL,
     love_phrase text NOT NULL,
     hate_phrase text NOT NULL,
-    biz_id int NOT NULL REFERENCES businesses (id) ON DELETE CASCADE
-);
-
-CREATE TABLE profiles (
-    id serial PRIMARY KEY,
     need text NOT NULL,
     motivation text NOT NULL,
     challenge text NOT NULL,
-    user_id integer NOT NULL REFERENCES users (id) ON DELETE CASCADE
+    biz_id int NOT NULL REFERENCES businesses (id) ON DELETE CASCADE
 );
+

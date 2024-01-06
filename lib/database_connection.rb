@@ -23,8 +23,6 @@ class DatabaseConnection
   end
 
   def delete_all_data
-    @db.exec 'DELETE FROM profiles;'
-    @db.exec 'ALTER SEQUENCE profiles_id_seq RESTART WITH 1;'
     @db.exec 'DELETE FROM users;'
     @db.exec 'ALTER SEQUENCE users_id_seq RESTART WITH 1;'
     @db.exec 'DELETE FROM businesses;'
@@ -38,10 +36,11 @@ class DatabaseConnection
 
   def create_new_user(uuid, user_params)
     biz_id = fetch_biz_id(uuid)
-    sql = 'INSERT INTO users (name, age, bio, love_phrase, hate_phrase, biz_id)
-            VALUES ($1, $2, $3, $4, $5, $6)'
+    sql = 'INSERT INTO users (name, age, bio, love_phrase, hate_phrase, need, motivation, challenge, biz_id)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)'
     query(sql, user_params[:name], user_params[:age], user_params[:bio],
-          user_params[:love], user_params[:hate], biz_id)
+          user_params[:love_phrase], user_params[:hate_phrase], user_params[:need],
+          user_params[:motivation], user_params[:challenge], biz_id)
   end
 
   def delete_user_from_biz(user_id, biz_id)
@@ -60,7 +59,7 @@ class DatabaseConnection
   end
 
   def valid_business?(uuid)
-    valid_uuid?(uuid) && fetch_biz_id(uuid) > 0 ? true : false
+    valid_uuid?(uuid) && fetch_biz_id(uuid).positive?
   end
 
   def load_business(uuid)
@@ -74,15 +73,12 @@ class DatabaseConnection
              u.bio,
              u.love_phrase,
              u.hate_phrase,
-             p.id      AS profile_id,
-             p.need,
-             p.motivation,
-             p.challenge
+             u.need,
+             u.motivation,
+             u.challenge
         FROM businesses b
         LEFT JOIN users u
           ON b.id = u.biz_id
-        LEFT JOIN profiles p
-          ON u.id = p.user_id
        WHERE b.uuid = $1
        ORDER BY u.id;
     SQL
@@ -92,7 +88,20 @@ class DatabaseConnection
   end
 
   def load_user(id)
-    sql = 'SELECT * FROM users WHERE id = $1'
+    sql = <<~SQL
+      SELECT u.id      AS user_id,
+             u.name    AS user_name,
+             u.age,
+             u.bio,
+             u.love_phrase,
+             u.hate_phrase,
+             u.need,
+             u.motivation,
+             u.challenge
+      FROM users u
+      WHERE u.id = $1
+      ORDER BY u.id;
+    SQL
     result = query(sql, id)
 
     tuples_to_users(result).first
@@ -112,23 +121,16 @@ class DatabaseConnection
   def tuples_to_users(result)
     result.each_with_object([]) do |user_tuple, arr|
       arr << User.new(
-        user_tuple['id'].to_i,
-        user_tuple['name'],
+        user_tuple['user_id'].to_i,
+        user_tuple['user_name'],
         user_tuple['age'],
         user_tuple['bio'],
         user_tuple['love_phrase'],
         user_tuple['hate_phrase'],
-        tuple_to_profile(user_tuple)
+        user_tuple['need'],
+        user_tuple['motivation'],
+        user_tuple['challenge']
       )
     end
-  end
-
-  def tuple_to_profile(user_tuple)
-    Profile.new(
-      user_tuple['profile_id'].to_i,
-      user_tuple['need'],
-      user_tuple['motivation'],
-      user_tuple['challenge']
-    )
   end
 end

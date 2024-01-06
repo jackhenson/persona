@@ -23,14 +23,14 @@ class RoutesTest < Minitest::Test
     @db.delete_all_data
 
     # Sample Data
-    user_params = { name: 'Test Name', age: '25-34',
-                    bio: 'Test Bio', love: 'Love Phrase',
-                    hate: 'Hate Phrase', need: 'Test Need',
-                    motivation: 'Test Motivation', challenge: 'Test Challenge' }
+    @user_params = { name: 'Test Name', age: '25-34',
+                     bio: 'Test Bio', love_phrase: 'Love Phrase',
+                     hate_phrase: 'Hate Phrase', need: 'Test Need',
+                     motivation: 'Test Motivation', challenge: 'Test Challenge' }
     uuid = '3eaca621-0455-413a-b36b-63c8f1cfbfc3'
 
     @db.create_new_biz(uuid, 'Test Biz')
-    @db.create_new_user(uuid, user_params)
+    @db.create_new_user(uuid, @user_params)
     @business = @db.load_business(uuid)
   end
 
@@ -79,5 +79,16 @@ class RoutesTest < Minitest::Test
 
     get last_response['Location']
     assert_includes last_response.body, 'The user has been deleted.'
+  end
+
+  def test_create_user
+    post '/biz/3eaca621-0455-413a-b36b-63c8f1cfbfc3/users', @user_params
+
+    assert_equal 302, last_response.status
+
+    get last_response['Location']
+    assert_includes last_response.body, 'The user has been created.'
+    assert_includes last_response.body, 'Test Name'
+    assert_includes last_response.body, '25-34'
   end
 end

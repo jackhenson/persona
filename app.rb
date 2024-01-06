@@ -85,8 +85,8 @@ end
 post '/biz/:uuid/users' do
   uuid = params[:uuid]
   user_params = { name: params[:name], age: params[:age],
-                  bio: params[:bio], love: params[:love_phrase],
-                  hate: params[:hate_phrase], need: params[:motivation],
+                  bio: params[:bio], love_phrase: params[:love_phrase],
+                  hate_phrase: params[:hate_phrase], need: params[:need],
                   motivation: params[:motivation], challenge: params[:challenge] }
 
   error = nil
