@@ -11,6 +11,9 @@
       <li><strong>Bio:</strong> <%= u.bio %></li>
       <li><img src='/images/green-check-icon.png'> "I love <%= u.love_phrase %>."</li>
       <li><img src='/images/red-x-icon.png'> "I hate <%= u.hate_phrase %>."</li>
+      <li><strong>Need:</strong> <%= u.need %></li>
+      <li><strong>Motivation:</strong> <%= u.motivation %></li>
+      <li><strong>Challenge:</strong> <%= u.challenge %></li>
     </ul>
 
     <form action="/biz/<%= @business.uuid %>/users/<%= u.id %>/edit" method="get">

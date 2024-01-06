@@ -81,6 +81,18 @@ get '/biz/:uuid/users/new' do
   erb :new_user
 end
 
+def error_for_user_params(params)
+  if !(1..25).cover? params[:name].size
+    'User name must be between 1 and 25 characters.'
+  elsif !(1..250).cover? params[:bio].size
+    'User bio must be between 1 and 250 characters.'
+  elsif !(1..25).cover?(params[:love_phrase].size) || !(1..25).cover?(params[:hate_phrase].size)
+    'Love and hate answers must be between 1 and 25 characters.'
+  elsif [params[:need].size, params[:motivation].size, params[:challenge].size].all? { |p| !(1..100).cover? p }
+    'Need, motivation, and challenge answers must be between 1 and 100 characters.'
+  end
+end
+
 # Create new user
 post '/biz/:uuid/users' do
   uuid = params[:uuid]
@@ -89,8 +101,8 @@ post '/biz/:uuid/users' do
                   hate_phrase: params[:hate_phrase], need: params[:need],
                   motivation: params[:motivation], challenge: params[:challenge] }
 
-  error = nil
-  # error = error_for_user_params(user_params)
+  # error = nil
+  error = error_for_user_params(user_params)
   if error
     session[:error] = error
     erb :new_user
