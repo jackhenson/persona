@@ -16,13 +16,14 @@
       <li><strong>Challenge:</strong> <%= u.challenge %></li>
     </ul>
 
-    <form action="/biz/<%= @business.uuid %>/users/<%= u.id %>/edit" method="get">
-        <button class='edit-user-button' name='biz_id' value="<%= @business.id %>" type="submit">Edit User</button>
-    </form>
+    <div class="user-buttons">
+      <form class="user-button" action="/biz/<%= @business.uuid %>/users/<%= u.id %>/edit" method="get">
+          <button class='edit-user-button' name='biz_id' value="<%= @business.id %>" type="submit">Edit User</button>
+      </form>
 
-    <form action="/biz/<%= @business.uuid %>/users/<%= u.id %>/destroy" method="post">
-        <button class='add-user-button' name='biz_id' value="<%= @business.id %>" type="submit">Delete User</button>
-    </form>
-
+      <form class="user-button" action="/biz/<%= @business.uuid %>/users/<%= u.id %>/destroy" method="post">
+          <button class='add-user-button' name='biz_id' value="<%= @business.id %>" type="submit">Delete User</button>
+      </form>
+    </div>
   </div>
   <% end %>

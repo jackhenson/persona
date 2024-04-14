@@ -88,14 +88,10 @@ footer {
   bottom: 0;
 }
 
-/* button {
-  background-color: #CD7732;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-} */
+.user-button {
+  display: inline-block;
+  padding-bottom: 4px;
+}
 
 button:hover {
   background-color: #45a049;
@@ -107,7 +103,7 @@ button:hover {
   font-weight: bold;
   padding: 10px;
   border-radius: 8px;
-  align: center;
+  align-self: center;
   width: 40%;
 }
 
@@ -118,7 +114,7 @@ button:hover {
   font-weight: bold;
   padding: 10px;
   border-radius: 8px;
-  align: center;
+  align-self: center;
   width: 40%;
 }
 
@@ -175,12 +171,10 @@ input[type="radio"] {
 }
 
 .user-card {
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
   grid-row: span 1;
   grid-column: span 1;
-  width: 275px;
+  width: 290px;
   height: auto;
   background-color: #f0f0f0;
   border: 2px solid #ccc;
@@ -208,12 +202,17 @@ input[type="radio"] {
   padding: 20px;
 }
 
+.user-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .profile-img {
   align-self: center;
   padding-top: 20px;
   padding-bottom: 5px;
   width: 20%;
-  height: 20%;
   object-fit: cover;
 }
 
