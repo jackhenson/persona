@@ -1,9 +1,9 @@
-<section>
+<div class="sidebar">
   <p>To get started, create your business or organization</p>
-</section>
+</div>
 
-<aside>
-  <div id="biz-form">
+<div class="homepage-grid">
+  <div class="homepage-form">
     <form class="basic-form" action="/biz" method="post">
       <label for="biz_name"><strong>Create your business or organization.</strong> It's easy!</label>
       <br>
@@ -13,13 +13,11 @@
     </form>
   </div>
 
-  <br>
-
-  <div id="biz-form">
+  <div class="homepage-form">
     <form class="basic-form" action="/biz/retrieve" method="get">
       <label for="uuid"><strong>Already created a business?</strong> Enter Unique ID:</label>
       <input type="text" name="uuid" placeholder="3eaca621-0455-413a-b36b-63c8f1cfbfc3" required>
       <button type="submit">Submit</button>
     </form>
   </div>
-</aside>
+</div>

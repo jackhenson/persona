@@ -1,0 +1,116 @@
+.user-card {
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: black;
+  font-size: 22px;
+}
+
+.user-info {
+  color: black;
+  text-align: left;
+  padding: 8px 25px 10px 25px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.new-user-form-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-right: 150px;
+  padding-left: 15px;
+}
+
+.user-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 15px;
+}
+
+.user-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 20px 20px 20px;
+}
+
+.edit-user-button {
+  background-color: #45a049;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: center;
+  width: 90%;
+  cursor: pointer;
+}
+
+.delete-user-button {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 8px;
+  align-self: center;
+  width: 90%;
+  cursor: pointer;
+}
+
+.profile-img {
+  align-self: center;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  width: 20%;
+  object-fit: cover;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.add-user-button {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 8px;
+  align-self: center;
+  cursor: pointer;
+}
+
+@media (min-width: 1250px) {
+  .user-card-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .add-user-button {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 8px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .user-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-user-button {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 8px;
+    align-self: center;
+  }
+}

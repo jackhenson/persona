@@ -1,0 +1,51 @@
+#logo {
+  display: inline-block;
+  width: 250px;
+}
+
+header {
+  color: #fff;
+  padding: 8px;
+  text-align: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1em;
+  background-color: #515BAE;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 800px) {
+  #logo {
+    flex: 1;
+    padding-bottom: 15px;
+  }
+  
+  header {
+    flex-direction: column;
+  }
+  
+  nav {
+    flex: 1;
+  }
+}
+

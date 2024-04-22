@@ -1,23 +1,14 @@
 html {
-  background-color: #515BAE;
 }
 
 body {
+  background-color: #989dd1;
   font-family: Arial, sans-serif;
-  min-width: 300px;
-  max-width: 1024px;
   margin: 0 auto;
-  padding: 0 8px 0 8px; /* Minimal side padding for mobile. */
   font-family: "Work Sans", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 16px;
   color: white;
-}
-
-header {
-  color: #fff;
-  padding: 1em;
-  text-align: center;
 }
 
 h1 {
@@ -32,90 +23,88 @@ h2 {
   font-weight: normal;
 }
 
-nav {
-  display: flex;
-  flex-shrink: 0;
-  justify-content: space-around;
-  align-items: center;
-  /* background-color: #444; */
-  padding: 1em;
-}
-
-nav div {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5em 1em;
-}
-
-#logo {
-  display: inline-block;
-}
-
 .biz_name {
   font-size: 20px;
   font-weight: bold;
   padding-top: 5px;
 }
 
-main {
+.homepage-grid {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 15px;
+  padding-left: 15px;
+  padding-right: 150px;
+}
+
+.homepage-form {
+}
+
+.sidebar {
+  position: fixed;
+  background-color: #989dd1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 310px;
+  padding-top: 100px;
+  padding-left: 35px;
+}
+
+main {
   gap: 20px;
-  padding: 20px;
+  padding-left: 355px;
+  padding-right: 20px;
+  padding-top: 150px;
+  padding-bottom: 50px;
 }
 
-section {
-  border: 1px solid #ddd;
-  padding: 20px;
+@media (max-width: 800px) {
+  main {
+    padding-top: 450px;
+  }
+  
+  .sidebar {
+    padding-top: 125px; 
+  }
 }
 
-aside {
-  padding: 20px;
-}
+@media (max-width: 1000px) {
+  main {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 0px;
+  }
+
+  .sidebar {
+    position: relative;
+    margin-left: -30px;
+    height: 195px;
+    width: 100%;
+  }
+
+  .homepage-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    padding-left: 25px;
+    padding-right: 50px;
+  } 
+}  
 
 footer {
   color: #fff;
-  padding: 1em;
+  background-color: #515BAE;
   text-align: center;
   position: fixed;
+  padding-top: 8px;
   width: 100%;
+  left: 0;
+  right: 0;
   bottom: 0;
-}
-
-.user-button {
-  display: inline-block;
-  padding-bottom: 4px;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-.add-user-button {
-  color: black;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 8px;
-  align-self: center;
-  width: 40%;
-}
-
-.edit-user-button {
-  background-color: #45a049;
-  color: #fff;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 8px;
-  align-self: center;
-  width: 40%;
+  height: 25px;
+  z-index: 2;
 }
 
 .basic-form {
@@ -124,6 +113,7 @@ button:hover {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
 label {
@@ -141,10 +131,6 @@ textarea {
 
 input[type="radio"] {
     margin-right: 5px;
-}
-
-.hero {
-  height: 300px;
 }
 
 .flash {
@@ -168,68 +154,4 @@ input[type="radio"] {
 .flash.success {
   color: #33cc99;
   background: #CBF2E5; 
-}
-
-.user-card {
-  justify-content: space-around;
-  grid-row: span 1;
-  grid-column: span 1;
-  width: 290px;
-  height: auto;
-  background-color: #f0f0f0;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: black;
-  font-size: 22px;
-}
-
-.user-info {
-  color: black;
-  text-align: left;
-  padding: 8px 25px 10px 25px;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.user-card-list {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.user-buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.profile-img {
-  align-self: center;
-  padding-top: 20px;
-  padding-bottom: 5px;
-  width: 20%;
-  object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  #logo {
-    align-self: center;
-    margin-bottom: 10px;
-  }
-
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }

@@ -6,14 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/whitespace-reset.css">
   <link rel="stylesheet" href="/stylesheets/application.css">
+  <link rel="stylesheet" href="/stylesheets/users.css">
+  <link rel="stylesheet" href="/stylesheets/header.css">
 </head>
 <body>
   <header>
-    <nav>
       <div id="logo">
         <h1><a href="/">EZ Persona</a></h1>
         <h2><em>A <strong>Simple</strong> & <strong>Free</strong> User Persona Creator</em></h2>
       </div>
+    <nav>
       <div>
         <a href="#">How It Works</a>
         <a href="#">FAQ</a>
@@ -40,8 +42,8 @@
     <%== yield %>
   </main>
 
-  <%# <footer>
-    <p>&copy; 2024 EZ Persona</p>
-  </footer> %>
+  <footer>
+    <p>&copy; <%= Date.today.year %> EZ Persona</p>
+  </footer>
 </body>
 </html>

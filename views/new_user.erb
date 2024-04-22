@@ -1,50 +1,50 @@
-<section>
+<div class="sidebar">
   <p>Create a new User Persona for your business.</p>
   <br>
   <p>Complete this form with details for this user, related to your product or service.</p>
-</section>
+</div>
 
-<div class="hero">
-    <div id="biz-form">
-      <form class="basic-form" action="/biz/<%= params[:uuid] %>/users" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<%= params['name'] || '' %>" required>
+<div class="new-user-form-container">
+  <div>
+    <form class="basic-form" action="/biz/<%= params[:uuid] %>/users" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%= params['name'] || '' %>" required>
 
-        <label for="age">Age range:</label><br>
-        <select name="age" id="age" required>
-          <option value="">--Please choose an option--</option>
-          <option value="18-24">18-24</option>
-          <option value="25-34">25-34</option>
-          <option value="35-44">35-44</option>
-          <option value="45-54">45-54</option>
-          <option value="55-64">55-64</option>
-          <option value="65+">65+</option>
-        </select>
+      <label for="age">Age range:</label><br>
+      <select name="age" id="age" required>
+        <option value="">--Please choose an option--</option>
+        <option value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-44">35-44</option>
+        <option value="45-54">45-54</option>
+        <option value="55-64">55-64</option>
+        <option value="65+">65+</option>
+      </select>
 
-        <br><br>
+      <br><br>
 
-        <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" rows="4" required><%= params['bio'] || '' %></textarea>
+      <label for="bio">Bio:</label>
+      <textarea id="bio" name="bio" rows="4" required><%= params['bio'] || '' %></textarea>
 
-        <label for="love_phrase"><img src='/images/red-heart-icon.png'> What something this person <strong>loves</strong>?</label>
-        <input type="text" id="love_phrase" name="love_phrase" value="<%= params['love_phrase'] || '' %>" required>
+      <label for="love_phrase"><img src='/images/red-heart-icon.png'> What something this person <strong>loves</strong>?</label>
+      <input type="text" id="love_phrase" name="love_phrase" value="<%= params['love_phrase'] || '' %>" required>
 
-        <label for="hate_phrase">What's something this person <strong>hates</strong>?</label>
-        <input type="text" id="hate_phrase" name="hate_phrase" value="<%= params['hate_phrase'] || '' %>" required>
-        <br><br>
+      <label for="hate_phrase">What's something this person <strong>hates</strong>?</label>
+      <input type="text" id="hate_phrase" name="hate_phrase" value="<%= params['hate_phrase'] || '' %>" required>
+      <br><br>
 
-        <h5>Needs, Motivations, and Challenges</h5>
-        <p>Answer these as related to the products or services offered by your business.</p>
-        <br>
-        <label for="need">Describe a critical <strong>need</strong> for this user:</label>
-        <input type="text" id="need" name="need" value="<%= params['need'] || ''%>" required>
-        <br>
-        <label for="motivation">What <strong>motivates</strong> this customer?</label>
-        <input type="text" id="motivation" name="motivation" value="<%= params['motivation'] || '' %>" required>
-        <br>
-        <label for="challenge">Name a <strong>challenge</strong> for this user:</label>
-        <input type="text" id="challenge" name="challenge" value="<%= params['challenge'] || '' %>" required>
-        <button type="submit">Submit</button>
+      <h5>Needs, Motivations, and Challenges</h5>
+      <p>Answer these as related to the products or services offered by your business.</p>
+      <br>
+      <label for="need">Describe a critical <strong>need</strong> for this user:</label>
+      <input type="text" id="need" name="need" value="<%= params['need'] || ''%>" required>
+      <br>
+      <label for="motivation">What <strong>motivates</strong> this customer?</label>
+      <input type="text" id="motivation" name="motivation" value="<%= params['motivation'] || '' %>" required>
+      <br>
+      <label for="challenge">Name a <strong>challenge</strong> for this user:</label>
+      <input type="text" id="challenge" name="challenge" value="<%= params['challenge'] || '' %>" required>
+      <button type="submit">Submit</button>
     </form>
-    </div>
   </div>
+</div>
