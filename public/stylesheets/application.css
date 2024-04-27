@@ -1,6 +1,3 @@
-html {
-}
-
 body {
   background-color: #989dd1;
   font-family: Arial, sans-serif;
@@ -36,9 +33,6 @@ h2 {
   row-gap: 15px;
   padding-left: 15px;
   padding-right: 150px;
-}
-
-.homepage-form {
 }
 
 .sidebar {
