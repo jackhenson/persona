@@ -50,7 +50,7 @@ main {
   gap: 20px;
   padding-left: 355px;
   padding-right: 20px;
-  padding-top: 150px;
+  padding-top: 110px;
   padding-bottom: 50px;
 }
 
@@ -129,10 +129,10 @@ input[type="radio"] {
 
 .flash {
   max-width: 960px;
-  padding: 10px 20px;
-  margin: 20px auto 1.5em auto;
+  padding: 10px 20px; 
+  margin-bottom: 10px;
   color: #3399cc;
-  background: #CBE5F2; 
+  background: #CBE5F2;
 }
 
 .flash p {

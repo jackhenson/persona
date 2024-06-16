@@ -24,21 +24,21 @@
     </nav>
   </header>
 
-  <% if session[:success] %>
-    <div class="flash success">
-    <!-- Deletes and returns hash value -->
-    <p><%= session.delete(:success) %></p>
-    </div>
-  <% end %>
-
-  <% if session[:error] %>
-    <div class="flash error">
-      <!-- Deletes and returns hash value -->
-      <p><%= session.delete(:error) %></p>
-    </div>
-  <% end %>
-
   <main>
+    <% if session[:success] %>
+      <div class="flash success">
+        <!-- Deletes and returns hash value -->
+        <p><%= session.delete(:success) %></p>
+      </div>
+    <% end %>
+
+    <% if session[:error] %>
+      <div class="flash error">
+        <!-- Deletes and returns hash value -->
+        <p><%= session.delete(:error) %></p>
+      </div>
+    <% end %>
+
     <%== yield %>
   </main>
 
