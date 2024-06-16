@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for persona on 2024-04-27T14:21:35-04:00
+# fly.toml app configuration file generated for persona on 2024-06-16T14:54:44-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,6 +7,10 @@ app = 'persona'
 primary_region = 'iad'
 
 [build]
+  builder = 'heroku/builder:24'
+
+[env]
+  PORT = '8080'
 
 [http_service]
   internal_port = 8080

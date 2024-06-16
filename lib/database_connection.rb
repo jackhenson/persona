@@ -4,7 +4,7 @@ require_relative 'business'
 class DatabaseConnection
   def initialize(logger = nil)
     @db = if Sinatra::Base.production?
-            PG.connect(ENV('DATABASE_URL'))
+            PG.connect(ENV['DATABASE_URL'])
           elsif Sinatra::Base.test?
             PG.connect(dbname: 'persona_test')
           else
