@@ -42,7 +42,7 @@ post '/biz' do
   else
     uuid = SecureRandom.uuid
     @storage.create_new_biz(uuid, biz_name)
-    session[:success] = 'The business has been created.'
+    session[:success] = 'Success! The business has been created.'
     redirect "/biz/#{uuid}"
   end
 end
@@ -57,7 +57,7 @@ get '/biz/retrieve' do
   if @storage.valid_business?(uuid)
     redirect "/biz/#{uuid}"
   else
-    session[:error] = 'Business not found. Please check your Unique ID and try again.'
+    session[:error] = 'Business not found! Please check your Unique ID and try again.'
     redirect '/'
   end
 end
@@ -72,7 +72,7 @@ get '/biz/:uuid' do
 
     erb :biz
   else
-    session[:error] = 'Business not found. Please check your Unique ID and try again.'
+    session[:error] = 'Business not found! Please check your Unique ID and try again.'
     redirect '/'
   end
 end
@@ -109,7 +109,7 @@ post '/biz/:uuid/users' do
     erb :new_user
   else
     @storage.create_new_user(uuid, user_params)
-    session[:success] = 'The user has been created.'
+    session[:success] = 'Success! The user has been created.'
     redirect "/biz/#{uuid}"
   end
 end
@@ -142,6 +142,6 @@ post '/biz/:uuid/users/:id' do
                   motivation: params[:motivation], challenge: params[:challenge] }
 
   @storage.update_user(uuid, user_params)
-  session[:success] = 'The user has been updated.'
+  session[:success] = 'Success! The user has been updated.'
   redirect "/biz/#{uuid}"
 end

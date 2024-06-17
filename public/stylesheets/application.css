@@ -60,7 +60,7 @@ main {
   }
   
   .sidebar {
-    padding-top: 125px; 
+    padding-top: 125px;
   }
 }
 
@@ -74,7 +74,7 @@ main {
   .sidebar {
     position: relative;
     margin-left: -30px;
-    height: 195px;
+    height: 95px;
     width: 100%;
   }
 
