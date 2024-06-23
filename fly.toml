@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for persona on 2024-04-27T14:21:35-04:00
+# fly.toml app configuration file generated for persona on 2024-06-16T10:29:29-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -13,7 +13,6 @@ primary_region = 'iad'
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 0
   processes = ['app']
 
 [[vm]]
