@@ -44,8 +44,7 @@ h2 {
   position: fixed;
   background-color: #989dd1;
   left: 0;
-  top: 0;
-  bottom: 0;
+  /* top: 0; */
   width: 310px;
   padding-top: 100px;
   padding-left: 35px;
