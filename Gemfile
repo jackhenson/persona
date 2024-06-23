@@ -6,6 +6,7 @@ gem 'rubocop', '1.51.0', require: false
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'webrick'
+gem 'rackup'
 
 group :production do
   gem 'puma'
