@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # fly.toml app configuration file generated for persona on 2024-06-16T10:29:29-04:00
-=======
-# fly.toml app configuration file generated for persona on 2024-06-16T14:54:44-04:00
->>>>>>> 35e6c918278ed3121b4634947c8b92ae2add6844
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
