@@ -21,10 +21,9 @@
 }
 
 .new-user-form-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  padding-right: 150px;
-  padding-left: 15px;
+  /* display: grid; 
+  grid-template-columns: 1fr; */
+  width: auto;
 }
 
 .user-card-grid {

@@ -1,11 +1,11 @@
-<div class="sidebar">
-  <p>Create a new User Persona for your business.</p>
-  <br>
-  <p>Complete this form with details for this user, related to your product or service.</p>
-</div>
+<div class="homepage-main-flex">
+  <div class="sidebar">
+    <p>Create a new User Persona for your business.</p>
+    <br>
+    <p>Complete this form with details for this user, related to your product or service.</p>
+  </div>
 
-<div class="new-user-form-container">
-  <div>
+  <div class="new-user-form-container">
     <form class="basic-form" action="/biz/<%= params[:uuid] %>/users" method="post">
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" value="<%= params['name'] || '' %>" required>

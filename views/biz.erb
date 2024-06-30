@@ -1,23 +1,24 @@
+<div class="homepage-main-flex">
+  <div class="sidebar">
+    <p>Business name:<p>
+    <p class='biz_name'><%= @business.name %></p>
+    <br>
+    <p><strong>Your unique Business ID is:</strong> <%= @business.uuid %></p>
+    <br>
+    <p><strong>Sharing link:</strong> <a href="<%= @biz_link %>"><%= @biz_link %></a></p>
+    <br>
+    <p>This business has <%= @users.size %> user persona(s).</p>
+  </div>
 
-<div class="sidebar">
-  <p>Business name:<p>
-  <p class='biz_name'><%= @business.name %></p>
+  <div>
+      <form  action="/biz/<%= params[:uuid] %>/users/new" method="get">
+          <button class='add-user-button' type="submit"><img src='/images/add-icon.png'>  Create New User</button>
+      </form>
+  <div>
+
   <br>
-  <p><strong>Your unique Business ID is:</strong> <%= @business.uuid %></p>
-  <br>
-  <p><strong>Sharing link:</strong> <a href="<%= @biz_link %>"><%= @biz_link %></a></p>
-  <br>
-  <p>This business has <%= @users.size %> user persona(s).</p>
-</div>
 
-<div>
-    <form  action="/biz/<%= params[:uuid] %>/users/new" method="get">
-        <button class='add-user-button' type="submit"><img src='/images/add-icon.png'>  Create New User</button>
-    </form>
-<div>
-
-<br>
-
-<div class="user-card-grid">
-  <%== erb :user_card %>
+  <div class="user-card-grid">
+    <%== erb :user_card %>
+  </div>
 </div>
