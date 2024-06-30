@@ -71,7 +71,9 @@
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #515BAE;
+  color: white;
+  transition: 0.3s;
 }
 
 .add-user-button {

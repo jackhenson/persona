@@ -1,50 +1,50 @@
-<section>
-  <p>You are editing <%= @user.name %>'s profile.</p>
-  <br>
-  <p><a href='/biz/<%= @uuid %>'>Go back to the business page.</a></p>
-</section>
-
-  <div class="hero">
-    <div id="biz-form">
-      <form class="basic-form" action="/biz/<%= params[:uuid] %>/users/<%= @user_id %>" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="<%= @user.name %>" required>
-
-        <label for="age">Age range:</label><br>
-        <select name="age" id="age" required>
-          <option value="">--Please choose an option--</option>
-          <option value="18-24">18-24</option>
-          <option value="25-34">25-34</option>
-          <option value="35-44">35-44</option>
-          <option value="45-54">45-54</option>
-          <option value="55-64">55-64</option>
-          <option value="65+">65+</option>
-        </select>
-
-        <br><br>
-
-        <label for="bio">Bio:</label>
-        <textarea id="bio" name="bio" rows="4" required><%= @user.bio %></textarea>
-
-        <label for="love_phrase"><img src='/images/red-heart-icon.png'> What something this person <strong>loves</strong>?</label>
-        <input type="text" id="love_phrase" name="love_phrase" value="<%= @user.love_phrase %>" required>
-
-        <label for="hate_phrase">What's something this person <strong>hates</strong>?</label>
-        <input type="text" id="hate_phrase" name="hate_phrase" value="<%= @user.hate_phrase %>" required>
-        <br><br>
-
-        <h5>Needs, Motivations, and Challenges</h5>
-        <p>Answer these as related to the products or services offered by your business.</p>
-        <br>
-        <label for="need">Describe a critical <strong>need</strong> for this user:</label>
-        <input type="text" id="need" name="need" value="<%= @user.need %>" required>
-        <br>
-        <label for="motivation">What <strong>motivates</strong> this customer?</label>
-        <input type="text" id="motivation" name="motivation" value="<%= @user.motivation %>" required>
-        <br>
-        <label for="challenge">Name a <strong>challenge</strong> for this user:</label>
-        <input type="text" id="challenge" name="challenge" value="<%= @user.challenge %>" required>
-        <button type="submit">Submit</button>
-    </form>
-    </div>
+<div class="homepage-main-flex">
+  <div class="sidebar">
+    <p>You are editing <%= @user.name %>'s profile.</p>
+    <br>
+    <p><a href='/biz/<%= @uuid %>'>Go back to the business page.</a></p>
   </div>
+
+  <div id="biz-form">
+    <form class="basic-form" action="/biz/<%= params[:uuid] %>/users/<%= @user_id %>" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%= @user.name %>" required>
+
+      <label for="age">Age range:</label><br>
+      <select name="age" id="age" required>
+        <option value="">--Please choose an option--</option>
+        <option value="18-24" <%= @user.age == "18-24" ? "selected" : "" %>>18-24</option>
+        <option value="25-34" <%= @user.age == "25-34" ? "selected" : "" %>>25-34</option>
+        <option value="35-44" <%= @user.age == "35-44" ? "selected" : "" %>>35-44</option>
+        <option value="45-54" <%= @user.age == "45-54" ? "selected" : "" %>>45-54</option>
+        <option value="55-64" <%= @user.age == "55-64" ? "selected" : "" %>>55-64</option>
+        <option value="65+" <%= @user.age == "65+" ? "selected" : "" %>>65+</option>
+      </select>
+
+      <br><br>
+
+      <label for="bio">Bio:</label>
+      <textarea id="bio" name="bio" rows="4" required><%= @user.bio %></textarea>
+
+      <label for="love_phrase"><img src='/images/red-heart-icon.png'> What something this person <strong>loves</strong>?</label>
+      <input type="text" id="love_phrase" name="love_phrase" value="<%= @user.love_phrase %>" required>
+
+      <label for="hate_phrase">What's something this person <strong>hates</strong>?</label>
+      <input type="text" id="hate_phrase" name="hate_phrase" value="<%= @user.hate_phrase %>" required>
+      <br><br>
+
+      <h5>Needs, Motivations, and Challenges</h5>
+      <p>Answer these as related to the products or services offered by your business.</p>
+      <br>
+      <label for="need">Describe a critical <strong>need</strong> for this user:</label>
+      <input type="text" id="need" name="need" value="<%= @user.need %>" required>
+      <br>
+      <label for="motivation">What <strong>motivates</strong> this customer?</label>
+      <input type="text" id="motivation" name="motivation" value="<%= @user.motivation %>" required>
+      <br>
+      <label for="challenge">Name a <strong>challenge</strong> for this user:</label>
+      <input type="text" id="challenge" name="challenge" value="<%= @user.challenge %>" required>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
